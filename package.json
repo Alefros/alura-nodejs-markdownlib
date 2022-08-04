@@ -1,0 +1,24 @@
+{
+  "name": "nodejs-markdownlib",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {
+    "chalk": "^5.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alefros/alura-nodejs-markdownlib.git"
+  },
+  "author": "Alefros",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alefros/alura-nodejs-markdownlib/issues"
+  },
+  "homepage": "https://github.com/Alefros/alura-nodejs-markdownlib#readme"
+}
