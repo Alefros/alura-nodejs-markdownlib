@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "dependencies": {
-    "chalk": "^5.0.1"
+    "chalk": "^4.0.0"
   },
   "devDependencies": {},
   "scripts": {
