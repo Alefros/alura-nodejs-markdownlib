@@ -4,6 +4,7 @@ const fs = require('fs');
 const ASSETS_PATH = './files/';
 const FILE_PATH =  ASSETS_PATH + 'text1.md';
 const encoding = 'utf-8';
+const regex = /\[([^\]]*)\]\(https?:\/\/[^$#\s].[^\s]*\)/gm;
 
 function treatError(error) {
     throw new Error(chalk.red(error.code, 'Error on access this file'));
@@ -27,5 +28,4 @@ function getFile(filePath) {
     });
 }
 
-getFile(FILE_PATH);
 getFileAsync(ASSETS_PATH);
