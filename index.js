@@ -3,13 +3,13 @@ const fs = require('fs');
 
 const ASSETS_PATH = './files/';
 const FILE_PATH =  ASSETS_PATH + 'text1.md';
+const encoding = 'utf-8';
 
 function treatError(error) {
     throw new Error(chalk.red(error.code, 'Error on access this file'));
 }
 
 function getFileAsync(filePath) {
-    const encoding = 'utf-8';
     fs.promises
         .readFile(filePath, encoding)
         .then((text) => chalk.green(console.log(text)))
@@ -17,7 +17,6 @@ function getFileAsync(filePath) {
 }
 
 function getFile(filePath) {
-    const encoding = 'utf-8';
     fs.readFile(filePath, encoding, (error, data) => {
         if (error) {
             treatError(error);
