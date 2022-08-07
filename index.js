@@ -12,7 +12,7 @@ function treatError(error) {
 async function getFileAsync(filePath) {
     try {
         const text = await fs.promises.readFile(filePath, encoding);
-        chalk.green(console.log(text));
+        console.log(getTextsLinks(text));
     } catch (error) {
         treatError(error);
     }
@@ -27,5 +27,15 @@ function getFile(filePath) {
     });
 }
 
-getFile(FILE_PATH);
-getFileAsync(ASSETS_PATH);
+function getTextsLinks(text) {
+    
+    const regex = /\[([^\]]*)\]\((https?:\/\/[^$#\s].[^\s]*)\)/gm;
+    const links = [];
+    let temp;
+    while ((temp = regex.exec(text)) != null) {
+        links.push({ [temp[1]] : temp[2] });
+    }
+    return links;
+}
+
+getFileAsync(FILE_PATH);
