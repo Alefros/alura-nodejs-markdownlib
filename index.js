@@ -4,7 +4,6 @@ const fs = require('fs');
 const ASSETS_PATH = './files/';
 const FILE_PATH =  ASSETS_PATH + 'text1.md';
 const encoding = 'utf-8';
-const regex = /\[([^\]]*)\]\(https?:\/\/[^$#\s].[^\s]*\)/gm;
 
 function treatError(error) {
     throw new Error(chalk.red(error.code, 'Error on access this file'));
@@ -13,7 +12,7 @@ function treatError(error) {
 async function getFileAsync(filePath) {
     try {
         const text = await fs.promises.readFile(filePath, encoding);
-        chalk.green(console.log(text));
+        console.log(getTextsLinks(text));
     } catch (error) {
         treatError(error);
     }
@@ -28,4 +27,15 @@ function getFile(filePath) {
     });
 }
 
-getFileAsync(ASSETS_PATH);
+function getTextsLinks(text) {
+    
+    const regex = /\[([^\]]*)\]\((https?:\/\/[^$#\s].[^\s]*)\)/gm;
+    const links = [];
+    let temp;
+    while ((temp = regex.exec(text)) != null) {
+        links.push({ [temp[1]] : temp[2] });
+    }
+    return links;
+}
+
+getFileAsync(FILE_PATH);
