@@ -9,7 +9,7 @@ function treatError(error) {
     throw new Error(chalk.red(error.code, 'Error on access this file'));
 }
 
-async function getFileAsync(filePath) {
+async function getFile(filePath) {
     try {
         const text = await fs.promises.readFile(filePath, encoding);
         return getTextsLinks(text);
@@ -18,7 +18,7 @@ async function getFileAsync(filePath) {
     }
 }
 
-function getFile(filePath) {
+function getFileSyncrhonous(filePath) {
     fs.readFile(filePath, encoding, (error, data) => {
         if (error) {
             treatError(error);
@@ -38,4 +38,4 @@ function getTextsLinks(text) {
     return links.length === 0 ? 'No have links' : links;
 }
 
-module.exports = getFileAsync;
+module.exports = getFile;
