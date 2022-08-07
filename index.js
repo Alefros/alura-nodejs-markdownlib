@@ -9,11 +9,13 @@ function treatError(error) {
     throw new Error(chalk.red(error.code, 'Error on access this file'));
 }
 
-function getFileAsync(filePath) {
-    fs.promises
-        .readFile(filePath, encoding)
-        .then((text) => chalk.green(console.log(text)))
-        .catch((error) => treatError(error));
+async function getFileAsync(filePath) {
+    try {
+        const text = await fs.promises.readFile(filePath, encoding);
+        chalk.green(console.log(text));
+    } catch (error) {
+        treatError(error);
+    }
 }
 
 function getFile(filePath) {
@@ -26,4 +28,4 @@ function getFile(filePath) {
 }
 
 getFile(FILE_PATH);
-getFileAsync(FILE_PATH);
+getFileAsync(ASSETS_PATH);
