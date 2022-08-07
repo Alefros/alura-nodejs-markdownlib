@@ -1,3 +1,4 @@
+const fetch = require('node-fetch');
 
 function extractUrls(links) {
     return links.map(objectLink =>  Object.values(objectLink).join());
