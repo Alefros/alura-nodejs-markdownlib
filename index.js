@@ -18,7 +18,7 @@ async function getFile(filePath) {
     }
 }
 
-function getFileSyncrhonous(filePath) {
+function getFileSynchronous(filePath) {
     fs.readFile(filePath, encoding, (error, data) => {
         if (error) {
             treatError(error);
