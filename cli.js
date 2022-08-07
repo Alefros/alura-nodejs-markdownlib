@@ -1,5 +1,6 @@
 const chalk = require('chalk');
 const getFile = require('./index');
+const urlsValidator = require('./http-validation');
 
 const path = process.argv;
 
