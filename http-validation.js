@@ -1,5 +1,10 @@
+
+function extractUrls(links) {
+    return links.map(objectLink =>  Object.values(objectLink).join());
+}
+
 function urlsValidator(links) {
-    return links;
+    return extractUrls(links);
 }
 
 module.exports = urlsValidator;
