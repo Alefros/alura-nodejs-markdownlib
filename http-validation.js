@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-function handlerError(error) {
+function errorHandler(error) {
     throw new Error(error.message);
 }
 
@@ -14,7 +14,7 @@ async function statusCheck(urls) {
             }));
         return arrayStatus;
     } catch (error) {
-         handlerError(error);           
+         errorHandler(error);           
     }
 }
 
