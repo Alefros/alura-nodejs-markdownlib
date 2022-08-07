@@ -10,12 +10,10 @@ function treatError(error) {
 
 function getFileAsync(filePath) {
     const encoding = 'utf-8';
-    
     fs.promises
-    .readFile(filePath, encoding)
-    .then((text) => chalk.green(console.log(text)))
-    .catch((error) => treatError(error));
-    
+        .readFile(filePath, encoding)
+        .then((text) => chalk.green(console.log(text)))
+        .catch((error) => treatError(error));
 }
 
 function getFile(filePath) {
