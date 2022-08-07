@@ -7,15 +7,19 @@ const ARRAY_RESULT_1 = [
     {
         FileList: 'https://developer.mozilla.org/pt-BR/docs/Web/API/FileList'
     }
-]
+];
 
 describe('getFile::', () => {
     it('Must be a function', () => {
         expect(typeof getFile).toBe('function');
     });
-    it('Must be return results array::', async () => {
+    it('Must be return results array', async () => {
         const result = await getFile(ASSET_FILEPATH_1); 
         expect(result).toEqual(ARRAY_RESULT_1);
+    });
+    it('Must be return "No have links" message', async () => {
+        const result = await getFile(ASSET_FILEPATH_2);
+        expect(result).toBe('No have links');
     });
 });
 
