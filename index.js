@@ -12,7 +12,7 @@ function treatError(error) {
 async function getFileAsync(filePath) {
     try {
         const text = await fs.promises.readFile(filePath, encoding);
-        console.log(getTextsLinks(text));
+        return getTextsLinks(text);
     } catch (error) {
         treatError(error);
     }
@@ -33,9 +33,9 @@ function getTextsLinks(text) {
     const links = [];
     let temp;
     while ((temp = regex.exec(text)) != null) {
-        links.push({ [temp[1]] : temp[2] });
+        links.push({ [temp[1]]: temp[2] });
     }
-    return links;
+    return links.length === 0 ? 'No have links' : links;
 }
 
-getFileAsync(FILE_PATH);
+module.exports = getFileAsync;
